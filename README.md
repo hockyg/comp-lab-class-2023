@@ -1,2 +1,3 @@
-# comp-lab-class-2023
-Computational Physical Chemistry Lab 2023
+# Dive in to computational physical chemistry
+This repository contains the inputs and lab tasks for NYU-CHEM-GA-2671.
+If you are in this class, you will fork this repository and pull the latest updates. 
