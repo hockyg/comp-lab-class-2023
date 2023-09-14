@@ -2,7 +2,7 @@
 	https://www.w3schools.com/git/default.asp?remote=github
 	From home to branch merge
 
-2) git clone https://github.com/YOURGITHUBID/comp-lab-class
+2) git clone https://github.com/YOURGITHUBID/comp-lab-class-2023
 
 3) Use vmd to visualize the structure of ubiquitin, and the simulation of beta amyloid
 
