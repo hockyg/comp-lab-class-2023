@@ -3,7 +3,7 @@
 
 2) Use mdtraj in a jupyter notebook to compute the phi and psi dihedral angles from these data. Make a plot of phi vs time and psi vs time.
 
- Make a free energy surface in phi, psi space from this data. In otherwords, compute a 2d histogram of the phi, psi data and plot the -log(histogram), nicely labeled, with a colorbar, etc
+Make a free energy surface in phi, psi space from this data. In otherwords, compute a 2d histogram of the phi, psi data compute `F(phi,psi)=-log(histogram)`, and plot `F(phi,psi)-min(F(phi,psi))` nicely labeled, with a colorbar, etc
 
 3) Parallel tempering 
 - Set up 3 directories called `T300` `T363` and `T440` which contain a file adp.tpr, except the temperature in adp.tpr is equal to 300, 363 or 440 respectively.
