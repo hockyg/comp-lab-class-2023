@@ -22,12 +22,12 @@ Make a jupyter notebook for analysis that generates any of the required plots wh
 		- Backup, put all on one line and remove ... if you still have error
 	- In addition to the inputs in the tutorial, try adding `GRID_WFILE=__FILENAME__.grid.dat GRID_WSTRIDE=10000` to write out a grid file.
 	- The grid file has the bias. Plot the negative of the energy column in the grid file, does it look like the FES? Is it slightly different? Perhaps scaled by a constant that you can figure out?
-4. Do Lugano exercise 2.
-	- In addition to what is said, [*optional try either a different hill height or sigma value and see how it changes the speed of convergence*]
-5. [*optional Do Lugano exercise 3 - try at least 3 different bias factors to see how this affects your results.
-	- Show the exploration of phi for these different bias factors, what do you notice?
-	- What is the smallest you can pick where the barriers are not surmounted?
-	- Plot the final Free Energy for each one, does it look the same?*]
+4. Do all of Lugano exercise 2.
+	- [*optional In addition to what is said, try either a different hill height or sigma value and see how it changes the speed of convergence*]
+5. [*optional Do Lugano exercise 3 - try at least 3 different bias factors to see how this affects your results.*]
+	- [*Show the exploration of phi for these different bias factors, what do you notice?*]
+	- [*What is the smallest you can pick where the barriers are not surmounted?*]
+	- [*Plot the final Free Energy for each one, does it look the same?*]
 6. **Important** Now we will do 2d metadynamics in phi and psi
 	- Put `ARG=phi,psi` and for `SIGMA=sigma_phi,sigma_psi`
 	- Run at least 10 ns and check convergence of the FES with `sum_hills`. Is your bias factor and height okay or do you need to change it? Or run longer?
@@ -36,5 +36,3 @@ Make a jupyter notebook for analysis that generates any of the required plots wh
 
 **As usual, save the relevant figures with good titles etc in a Figures folder, and give your files good names**. 
 I.e. we should not see just COLVAR but things like `ala2_metad_biasfactor10_pace500_height1.2_sigma0.3_10ns.colvar.txt` and similarly for hills, xtc...
-
-
