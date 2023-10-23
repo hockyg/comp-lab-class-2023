@@ -1,0 +1,41 @@
+# 2d WCA system, random initial configuration
+
+#variable density equal 0.5
+variable initial_temperature equal 3.0
+variable final_temperature equal 0.1
+variable dt equal 0.01
+variable tau equal 100*${dt}
+variable thermo_time equal 50000*${dt}
+variable equil_steps equal 50000
+variable run_steps equal 100000
+
+units           lj
+atom_style      atomic
+dimension       2
+
+lattice         sq ${density}
+region          box block 0 20 0 20 -0.5 0.5
+# number of atom types
+create_box      1 box
+create_atoms    1 box
+mass 1 1.0
+
+velocity all create ${initial_temperature} 12345
+
+pair_style      lj/cut 1.0
+#type_1 type_2 epsilon sigma cutoff
+pair_coeff      1 1 10.0 0.89089871814 1.0
+pair_modify shift yes
+
+timestep ${dt}
+thermo ${thermo_time}
+
+fix 1 all nvt temp ${initial_temperature} ${initial_temperature} ${tau}
+run ${equil_steps}
+
+unfix 1 
+dump           1 all atom ${run_steps} 2dWCA_T${final_temperature}_d${density}_N${run_steps}.lammpstrj
+dump           2 all dcd ${thermo_time} 2dWCA_T${final_temperature}_d${density}_N${run_steps}.dcd
+fix 1 all nvt temp ${initial_temperature} ${final_temperature} ${tau}
+
+run ${run_steps}
