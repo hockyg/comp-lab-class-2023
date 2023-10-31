@@ -1,0 +1,29 @@
+include ${configfile}
+
+shell mkdir equil
+
+variable prevbasename string equil/${pot}_T${prevtemp}_n${natoms}_v${volume}_${prevsteps}_${id}
+variable basename string equil/${pot}_T${temp}_n${natoms}_v${volume}_${steps}_${id}
+log ${basename}.log
+
+include ${pot}.lmp
+read_restart ${prevbasename}.final.lmprestart.${prevsteps}
+include ${pot}_particles.lmp
+reset_timestep 0
+
+print "Setting up annealing run"
+dump 1 all atom ${dumptime} ${basename}.lammpstrj
+#dump_modify 1 sort id scale no
+
+restart ${restarttime} ${basename}.restart
+restart ${steps} ${basename}.final.lmprestart
+
+thermo ${thermotime}
+timestep ${timestep}
+
+neighbor 0.5 bin
+neigh_modify every 1 delay ${neighborstep} check yes 
+
+velocity all create ${temp} ${id} dist gaussian
+fix 1 all nvt temp ${temp} ${temp} ${taut}
+run ${steps}

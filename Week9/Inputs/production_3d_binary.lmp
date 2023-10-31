@@ -1,0 +1,33 @@
+include ${configfile}
+
+shell mkdir prod
+variable prevbasename string equil/${pot}_T${temp}_n${natoms}_v${volume}_${steps}_${id}
+variable basename string prod/${pot}_T${temp}_n${natoms}_v${volume}_prod_${steps}_${id}
+log ${basename}.log
+
+include ${pot}.lmp
+read_restart ${prevbasename}.final.lmprestart.${steps}
+include ${pot}_particles.lmp
+reset_timestep 0
+
+print "Setting up equilibration run"
+variable dumptime2 equal ${steps}/2000
+dump 1 all dcd ${dumptime2} ${basename}.unwrap.dcd
+#dump 2 all dcd ${dumptime2} ${basename}.dcd
+dump_modify 1 unwrap yes
+#dump_modify 2 unwrap no 
+
+restart ${restarttime} ${basename}.restart
+restart ${steps} ${basename}.final.lmprestart
+
+thermo ${thermotime}
+timestep ${timestep}
+
+neighbor 0.5 bin
+neigh_modify every 1 delay ${neighborstep} check yes 
+
+#velocity all create ${temp} ${id} dist gaussian
+fix 1 all nvt temp ${temp} ${temp} ${taut}
+
+variable steps4 equal ${steps}/4
+run ${steps4}

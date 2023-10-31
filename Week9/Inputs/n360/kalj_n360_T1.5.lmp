@@ -1,0 +1,17 @@
+variable pot string "kalj"
+variable natoms equal 360
+variable volume equal 300
+
+variable prevtemp equal 2.0
+variable prevsteps equal 10000
+
+variable temp equal 1.5
+variable steps equal 10000
+
+variable timestep equal 0.002
+variable dumptime equal 10000
+variable neighborstep equal 20
+
+variable restarttime equal 10000
+variable thermotime equal 1000
+variable taut equal ${timestep}*100
