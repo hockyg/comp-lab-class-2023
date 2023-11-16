@@ -53,7 +53,7 @@ One way to do these calculations in `python` would be using using the python lib
 
 The production jobs output unwrapped dcd files, meaning that both RDF and MSD can be computed directly from those files. They can be loaded in VMD or MDAnalysis using the `.lammpstrj` files in the equil dir.
 
-As an example, to load a trajectory in MDAnalysis, one would do: `u = MDAnalysis.Universe("equil.lammpsdata", "trj_unwrapped.dcd", format="LAMMPS")`
+As an example, to load a trajectory in MDAnalysis, one would do: `u = MDAnalysis.Universe("old_trj.lammpstrj", "trj_unwrapped.dcd", topology_format="LAMMPSDUMP")`
 
 1. Using the production data, compute the radial distribution function between type 1 and type 1 particles, type 2 and type 2, and type 1 and type 2. 
 Make 3 separate figures showing g_11(r), g_22(r), g_12(r) - each one at all the temperatures. 
