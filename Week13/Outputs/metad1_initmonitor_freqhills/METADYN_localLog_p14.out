@@ -1,0 +1,17 @@
+
+ *** Local logger file of MPI task 14 in communicator 0 ***
+ *** PID      = 1396806
+ *** Hostname = cl002.hpc.nyu.edu                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+ ===== Routine Calling Stack ===== 
+
+            5 force_nonbond
+            4 fist_calc_energy_force
+            3 velocity_verlet
+            2 qs_mol_dyn_low
+            1 CP2K
+
+********************************************************************************
+* Value of r in Input =   0.632094 not in the spline range. Using =   1.271351 *
+********************************************************************************
+ WARNING| Particles:    5680   1722 at distance [au]:     0.88917227 less than:      0.95400000; increase EMAX_SPLINE.
